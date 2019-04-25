@@ -12,25 +12,43 @@ export function findIslands(sea: Sea) {
 }
 
 export function labelRows(sea: Sea): Number[][] {
-  return sea.map((row, i) => {
-    let counter = 0;
-    return row.map((tile, j) => {
-      if (tile === land) {
-        const tileBehind = safeAccess(row, j - 1) || Number.POSITIVE_INFINITY;
-        const tileAbove =
-          safeAccess(safeAccess(sea, i - 1), j) || Number.POSITIVE_INFINITY;
-        const isConnected =
-          (isFinite(tileBehind) && tileBehind !== water) ||
-          (isFinite(tileAbove) && tileAbove !== water);
+  let counter = 0;
+
+  for (let i = 0; i < sea.length; i++) {
+    for (let j = 0; j < sea[i].length; j++) {
+      const tile = sea[i][j];
+
+      if (tile !== water) {
+        // trick here
+        let tileBehind = getTileBehind(sea, i, j) || water;
+        let tileAbove = getTileAbove(sea, i, j) || water;
+
+        const isConnected = tileBehind !== water || tileAbove !== water;
         if (isConnected) {
-          return Math.min(tileBehind, tileAbove);
+          tileBehind =
+            tileBehind === water ? Number.POSITIVE_INFINITY : tileBehind;
+          tileAbove =
+            tileAbove === water ? Number.POSITIVE_INFINITY : tileAbove;
+          sea[i][j] = Math.min(tileBehind, tileAbove);
         } else {
-          counter += 1;
-          return counter;
+          counter++;
+          sea[i][j] = counter;
         }
       } else {
-        return water;
+        sea[i][j] = water;
       }
-    });
-  });
+    }
+
+    return sea;
+  }
+}
+
+export function getTileBehind(sea: Sea, i, j) {
+  const row = safeAccess(sea, i);
+  return safeAccess(row, j - 1);
+}
+
+export function getTileAbove(sea: Sea, i, j) {
+  const rowAbove = safeAccess(sea, i - 1);
+  return safeAccess(rowAbove, j);
 }

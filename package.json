@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --single-quote --write 'packages/**/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "format": "prettier --write 'packages/**/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "keywords": [
     "algorithms"

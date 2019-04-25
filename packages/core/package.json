@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "build": "mkdir -p build && babel src/index.ts --out-file build/build.js",
-    "test": "jest",
-    "test-debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+    "test": "jest"
   },
   "keywords": [
     "algorithms"
@@ -20,11 +19,5 @@
     "jest": "^24.7.1",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "dependencies": {}
+  }
 }
