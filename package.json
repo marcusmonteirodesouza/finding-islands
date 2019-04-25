@@ -1,0 +1,25 @@
+{
+  "name": "finding-islands",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --single-quote --write 'packages/**/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+  },
+  "keywords": [
+    "algorithms"
+  ],
+  "author": "Marcus Vinicius Monteiro de Souza",
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "devDependencies": {
+    "husky": "^2.1.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0"
+  }
+}

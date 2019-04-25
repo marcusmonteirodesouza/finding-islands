@@ -1,5 +1,3 @@
-import {Sea} from './sea'
+import { Sea } from "./sea";
 
-export {
-    Sea
-}
+export { Sea };

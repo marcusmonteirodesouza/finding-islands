@@ -1,4 +1,4 @@
-export type Sea =  Number[][];
+export type Sea = Number[][];
 
 export const water = 0;
 
