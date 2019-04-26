@@ -1,11 +1,13 @@
 {
   "name": "finding-islands",
+  "private": true,
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "workspaces": ["core"],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write 'packages/**/src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
+    "test": "yarn workspaces run test",
+    "format": "yarn workspaces run format",
+    "pre-commit": "yarn run format && yarn run test"
   },
   "keywords": [
     "algorithms"
@@ -14,12 +16,10 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "yarn run pre-commit"
     }
   },
   "devDependencies": {
-    "husky": "^2.1.0",
-    "prettier": "^1.17.0",
-    "pretty-quick": "^1.10.0"
+    "husky": "^2.1.0"
   }
 }

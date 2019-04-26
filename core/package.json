@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "build": "mkdir -p build && babel src/index.ts --out-file build/build.js",
-    "test": "jest"
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "test": "jest",
+    "pre-commit": "yarn run format && yarn run test"
   },
   "keywords": [
     "algorithms"
@@ -17,6 +19,8 @@
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.11",
     "jest": "^24.7.1",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
   }
