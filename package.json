@@ -5,6 +5,7 @@
   "description": "",
   "workspaces": ["core"],
   "scripts": {
+    "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
     "format": "yarn workspaces run format",
     "pre-commit": "yarn run format && yarn run test"
