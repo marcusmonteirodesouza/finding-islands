@@ -1,14 +1,27 @@
 import { safeAccess } from "../utils";
 import { Sea, land, water } from "./../types/sea";
 
-export function findIslands(sea: Sea) {
+export function findIslands(sea: Sea): Coordinate[][] {
   // https://www.youtube.com/watch?v=hMIrQdX4BkE
   const labeledSea = labelRows(sea);
-  sea.forEach((row, x) => {
-    const counter = 0;
-  });
-  sea.map(x => x.map(y => console.log(y)));
-  return 1;
+
+  const islands = {};
+
+  for (let i = 0; i < labeledSea.length; i++) {
+    for (let j = 0; j < labeledSea[i].length; j++) {
+      const label = labeledSea[i][j] as number;
+      if (label === water) {
+        continue;
+      }
+      if (label in islands) {
+        islands[label].push({ x: i, y: j });
+      } else {
+        islands[label] = [{ x: i, y: j }];
+      }
+    }
+  }
+
+  return Object.keys(islands).map(key => islands[key]);
 }
 
 export function labelRows(sea: Sea): Number[][] {
@@ -29,7 +42,14 @@ export function labelRows(sea: Sea): Number[][] {
             tileBehind === water ? Number.POSITIVE_INFINITY : tileBehind;
           tileAbove =
             tileAbove === water ? Number.POSITIVE_INFINITY : tileAbove;
-          sea[i][j] = Math.min(tileBehind, tileAbove);
+          const minLabel = Math.min(tileBehind, tileAbove);
+          sea[i][j] = minLabel;
+          if (isFinite(tileBehind)) {
+            sea[i][j - 1] = minLabel;
+          }
+          if (isFinite(tileAbove)) {
+            sea[i - 1][j] = minLabel;
+          }
         } else {
           counter++;
           sea[i][j] = counter;
@@ -38,9 +58,8 @@ export function labelRows(sea: Sea): Number[][] {
         sea[i][j] = water;
       }
     }
-
-    return sea;
   }
+  return sea;
 }
 
 export function getTileBehind(sea: Sea, i, j) {

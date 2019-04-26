@@ -125,7 +125,7 @@ describe("algorithm", () => {
       [0, 1, 0, 0, 2],
       [3, 0, 0, 2, 2],
       [0, 0, 0, 0, 0],
-      [4, 0, 5, 0, 6]
+      [5, 0, 6, 0, 7]
     ];
 
     expect(labelRows(sea0)).toEqual(expectedSea0);
@@ -144,9 +144,98 @@ describe("algorithm", () => {
       [1, 1, 0, 2, 0],
       [0, 1, 0, 2, 2],
       [0, 1, 1, 0, 0],
-      [1, 1, 0, 0, 3]
+      [1, 1, 0, 0, 4]
     ];
 
     expect(labelRows(sea2)).toEqual(expectedSea2);
+  });
+
+  test("findIslands", () => {
+    expect(findIslands(emptySea)).toEqual([]);
+
+    expect(findIslands(singleWaterSea)).toEqual([]);
+
+    expect(findIslands(singleLandSea)).toEqual([[{ x: 0, y: 0 }]]);
+
+    expect(findIslands(allWaterRowSea)).toEqual([]);
+
+    expect(findIslands(allLandRowSea)).toEqual([
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: 0, y: 2 },
+        { x: 0, y: 3 },
+        { x: 0, y: 4 }
+      ]
+    ]);
+
+    expect(findIslands(allWaterColumnSea)).toEqual([]);
+
+    expect(findIslands(allLandColumnSea)).toEqual([
+      [
+        { x: 0, y: 0 },
+        { x: 1, y: 0 },
+        { x: 2, y: 0 },
+        { x: 3, y: 0 },
+        { x: 4, y: 0 }
+      ]
+    ]);
+
+    expect(findIslands(singleRowSea)).toEqual([
+      [{ x: 0, y: 0 }, { x: 0, y: 1 }],
+      [{ x: 0, y: 4 }]
+    ]);
+
+    expect(findIslands(singleColumnSea)).toEqual([
+      [{ x: 0, y: 0 }, { x: 1, y: 0 }],
+      [{ x: 3, y: 0 }, { x: 4, y: 0 }]
+    ]);
+
+    const expectedIslandsSea0 = [
+      [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }],
+      [{ x: 0, y: 4 }, { x: 1, y: 4 }, { x: 2, y: 3 }, { x: 2, y: 4 }],
+      [{ x: 2, y: 0 }],
+      [{ x: 4, y: 0 }],
+      [{ x: 4, y: 2 }],
+      [{ x: 4, y: 4 }]
+    ];
+
+    expect(findIslands(sea0)).toEqual(expectedIslandsSea0);
+
+    const expectedIslandsSea1 = [
+      [
+        { x: 0, y: 2 },
+        { x: 1, y: 1 },
+        { x: 1, y: 2 },
+        { x: 1, y: 3 },
+        { x: 2, y: 0 },
+        { x: 2, y: 1 },
+        { x: 2, y: 2 },
+        { x: 2, y: 3 },
+        { x: 2, y: 4 },
+        { x: 3, y: 1 },
+        { x: 3, y: 2 },
+        { x: 3, y: 3 },
+        { x: 4, y: 2 }
+      ]
+    ];
+
+    expect(findIslands(sea1)).toEqual(expectedIslandsSea1);
+
+    const expectedIslandsSea2 = [
+      [
+        { x: 0, y: 0 },
+        { x: 0, y: 1 },
+        { x: 1, y: 1 },
+        { x: 2, y: 1 },
+        { x: 2, y: 2 },
+        { x: 3, y: 0 },
+        { x: 3, y: 1 }
+      ],
+      [{ x: 0, y: 3 }, { x: 1, y: 3 }, { x: 1, y: 4 }],
+      [{ x: 3, y: 4 }]
+    ];
+
+    expect(findIslands(sea2)).toEqual(expectedIslandsSea2);
   });
 });
