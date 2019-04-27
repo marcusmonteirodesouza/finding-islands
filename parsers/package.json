@@ -1,6 +1,6 @@
 {
   "name": "@finding-islands/parsers",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find Islands in the Sea, Parsers",
   "homepage": "https://github.com/marcusmonteirodesouza/finding-islands/tree/master/parsers",
   "source": "src/index.ts",
@@ -44,6 +44,6 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@finding-islands/core": "^1.0.3"
+    "@finding-islands/core": "1.0.4"
   }
 }

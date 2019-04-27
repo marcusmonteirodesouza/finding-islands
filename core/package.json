@@ -1,6 +1,6 @@
 {
   "name": "@finding-islands/core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Find Islands in the Sea, Core",
   "homepage": "https://github.com/marcusmonteirodesouza/finding-islands/tree/master/core",
   "source": "src/index.ts",
