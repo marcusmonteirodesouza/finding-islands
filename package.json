@@ -6,8 +6,6 @@
   "workspaces": ["core"],
   "scripts": {
     "build": "yarn workspaces run build",
-    "prepublish": "yarn workspaces run prepublish",
-    "publish": "yarn workspaces run publish",
     "test": "yarn workspaces run test",
     "format": "yarn workspaces run format",
     "pre-commit": "yarn run format && yarn run test"
