@@ -2,6 +2,7 @@
   "name": "@finding-islands/browser",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://marcusmonteirodesouza.github.io/finding-islands",
   "dependencies": {
     "@finding-islands/core": "1.0.4",
     "@finding-islands/parsers": "1.0.1",
@@ -21,7 +22,9 @@
     "test": "react-scripts test --watchAll=false",
     "format": "prettier --single-quote --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
     "eject": "react-scripts eject",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
@@ -45,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^2.0.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.17.0"
   }
