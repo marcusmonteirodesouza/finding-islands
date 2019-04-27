@@ -1,7 +1,7 @@
-import { safeAccess } from ".";
+import { safeAccess } from '.';
 
-describe("utils", () => {
-  test("safeAccess", () => {
+describe('utils', () => {
+  test('safeAccess', () => {
     expect(safeAccess([], 0)).toEqual(null);
     expect(safeAccess([], 1)).toEqual(null);
     expect(safeAccess([0], 0)).toEqual(0);

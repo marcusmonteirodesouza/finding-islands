@@ -3,12 +3,15 @@
   "private": true,
   "version": "1.0.0",
   "description": "Finding Islands",
-  "workspaces": ["core", "parsers"],
+  "workspaces": [
+    "core",
+    "parsers",
+    "browser"
+  ],
   "scripts": {
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
-    "format": "yarn workspaces run format",
-    "pre-commit": "yarn run format && yarn run test"
+    "format": "yarn workspaces run format"
   },
   "keywords": [
     "algorithms"
@@ -17,7 +20,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run pre-commit"
+      "pre-commit": "yarn run test && yarn run build && yarn workspaces run format && yarn workspaces run pre-commit"
     }
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
-import { WATER, LAND } from "./../types";
-import { findIslands, labelRows, getTileBehind, getTileAbove } from ".";
+import { WATER, LAND } from './../types';
+import { findIslands, labelRows, getTileBehind, getTileAbove } from '.';
 
-describe("algorithm", () => {
+describe('algorithm', () => {
   const empty = [];
 
   const emptySea = [[]];
@@ -53,7 +53,7 @@ describe("algorithm", () => {
     [WATER, LAND, LAND, LAND, WATER]
   ];
 
-  test("getTileBehind", () => {
+  test('getTileBehind', () => {
     expect(getTileBehind(emptySea, 0, 0)).toEqual(null);
 
     expect(getTileBehind(singleWaterTile, 0, 0)).toEqual(null);
@@ -87,7 +87,7 @@ describe("algorithm", () => {
     expect(getTileBehind(hugeIsland, 4, 4)).toEqual(WATER);
   });
 
-  test("getTileAbove", () => {
+  test('getTileAbove', () => {
     expect(getTileAbove(emptySea, 0, 0)).toEqual(null);
 
     expect(getTileAbove(singleWaterTile, 0, 0)).toEqual(null);
@@ -119,44 +119,44 @@ describe("algorithm", () => {
     expect(getTileAbove(hugeIsland, 4, 4)).toEqual(WATER);
   });
 
-  describe("labelRows", () => {
-    test("empty sea", () => {
+  describe('labelRows', () => {
+    test('empty sea', () => {
       expect(labelRows(emptySea)).toEqual(emptySea);
     });
 
-    test("single water tile", () => {
+    test('single water tile', () => {
       expect(labelRows(singleWaterTile)).toEqual([[0]]);
     });
 
-    test("single land tile", () => {
+    test('single land tile', () => {
       expect(labelRows(singleLandTile)).toEqual([[1]]);
     });
 
-    test("all water row", () => {
+    test('all water row', () => {
       expect(labelRows(allWaterRow)).toEqual([[0, 0, 0, 0, 0]]);
     });
 
-    test("all land row", () => {
+    test('all land row', () => {
       expect(labelRows(allLandRowSea)).toEqual([[1, 1, 1, 1, 1]]);
     });
 
-    test("all water column", () => {
+    test('all water column', () => {
       expect(labelRows(allWaterColumn)).toEqual([[0], [0], [0], [0], [0]]);
     });
 
-    test("all land column", () => {
+    test('all land column', () => {
       expect(labelRows(allLandColumn)).toEqual([[1], [1], [1], [1], [1]]);
     });
 
-    test("single row", () => {
+    test('single row', () => {
       expect(labelRows(singleRow)).toEqual([[1, 1, 0, 0, 2]]);
     });
 
-    test("single column", () => {
+    test('single column', () => {
       expect(labelRows(singleColumn)).toEqual([[1], [1], [0], [2], [2]]);
     });
 
-    test("common case 1", () => {
+    test('common case 1', () => {
       const expectedSea0 = [
         [1, 1, 0, 0, 2],
         [0, 1, 0, 0, 2],
@@ -168,7 +168,7 @@ describe("algorithm", () => {
       expect(labelRows(sea0)).toEqual(expectedSea0);
     });
 
-    test("huge island", () => {
+    test('huge island', () => {
       const expectedHugeIsland = [
         [0, 0, 1, 0, 0],
         [0, 1, 1, 1, 0],
@@ -180,7 +180,7 @@ describe("algorithm", () => {
       expect(labelRows(hugeIsland)).toEqual(expectedHugeIsland);
     });
 
-    test("common case 2", () => {
+    test('common case 2', () => {
       const expectedSea2 = [
         [1, 1, 0, 2, 0],
         [0, 1, 0, 2, 2],
@@ -192,28 +192,28 @@ describe("algorithm", () => {
     });
   });
 
-  describe("findIslands", () => {
-    test("empty", () => {
+  describe('findIslands', () => {
+    test('empty', () => {
       expect(findIslands(empty)).toEqual([]);
     });
 
-    test("empty sea", () => {
+    test('empty sea', () => {
       expect(findIslands(emptySea)).toEqual([]);
     });
 
-    test("single water tile", () => {
+    test('single water tile', () => {
       expect(findIslands(singleWaterTile)).toEqual([]);
     });
 
-    test("single land tile", () => {
+    test('single land tile', () => {
       expect(findIslands(singleLandTile)).toEqual([[{ x: 0, y: 0 }]]);
     });
 
-    test("all water row", () => {
+    test('all water row', () => {
       expect(findIslands(allWaterRow)).toEqual([]);
     });
 
-    test("all land row", () => {
+    test('all land row', () => {
       expect(findIslands(allLandRowSea)).toEqual([
         [
           { x: 0, y: 0 },
@@ -225,11 +225,11 @@ describe("algorithm", () => {
       ]);
     });
 
-    test("all water column", () => {
+    test('all water column', () => {
       expect(findIslands(allWaterColumn)).toEqual([]);
     });
 
-    test("all land column", () => {
+    test('all land column', () => {
       expect(findIslands(allLandColumn)).toEqual([
         [
           { x: 0, y: 0 },
@@ -241,21 +241,21 @@ describe("algorithm", () => {
       ]);
     });
 
-    test("single row", () => {
+    test('single row', () => {
       expect(findIslands(singleRow)).toEqual([
         [{ x: 0, y: 0 }, { x: 0, y: 1 }],
         [{ x: 0, y: 4 }]
       ]);
     });
 
-    test("single column", () => {
+    test('single column', () => {
       expect(findIslands(singleColumn)).toEqual([
         [{ x: 0, y: 0 }, { x: 1, y: 0 }],
         [{ x: 3, y: 0 }, { x: 4, y: 0 }]
       ]);
     });
 
-    test("common case 1", () => {
+    test('common case 1', () => {
       const expectedIslandsSea0 = [
         [{ x: 0, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }],
         [{ x: 0, y: 4 }, { x: 1, y: 4 }, { x: 2, y: 3 }, { x: 2, y: 4 }],
@@ -268,7 +268,7 @@ describe("algorithm", () => {
       expect(findIslands(sea0)).toEqual(expectedIslandsSea0);
     });
 
-    test("huge island", () => {
+    test('huge island', () => {
       const expectedHugeIsland = [
         [
           { x: 0, y: 2 },
@@ -290,7 +290,7 @@ describe("algorithm", () => {
       expect(findIslands(hugeIsland)).toEqual(expectedHugeIsland);
     });
 
-    test("common case 2", () => {
+    test('common case 2', () => {
       const expectedIslandsSea2 = [
         [
           { x: 0, y: 0 },
@@ -308,7 +308,7 @@ describe("algorithm", () => {
       expect(findIslands(sea2)).toEqual(expectedIslandsSea2);
     });
 
-    test("non-square sea", () => {
+    test('non-square sea', () => {
       const expectedIslandsNonSquareSea = [
         [{ x: 0, y: 0 }],
         [{ x: 1, y: 1 }, { x: 2, y: 1 }],

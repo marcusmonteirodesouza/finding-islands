@@ -1,5 +1,5 @@
-import { safeAccess } from "../utils";
-import { Sea, WATER } from "./../types";
+import { safeAccess } from '../utils';
+import { Sea, WATER } from './../types';
 
 /**
  * Returns the islands in a map.

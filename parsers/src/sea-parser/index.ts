@@ -1,4 +1,4 @@
-import { Sea, LAND, WATER } from "@finding-islands/core";
+import { Sea, LAND, WATER } from '@finding-islands/core';
 
 export default class SeaParser {
   /**
@@ -33,21 +33,21 @@ export default class SeaParser {
     const landStr = LAND.toString();
     const waterStr = WATER.toString();
 
-    const relevantTilesRegExp = new RegExp(`[^${landStr}${waterStr}\\n]`, "g");
+    const relevantTilesRegExp = new RegExp(`[^${landStr}${waterStr}\\n]`, 'g');
 
-    const relevantGrid = grid.replace(relevantTilesRegExp, "");
+    const relevantGrid = grid.replace(relevantTilesRegExp, '');
 
     return relevantGrid
-      .split("\n")
+      .split('\n')
       .filter(row => row.length > 0)
       .map(row => {
-        return row.split("").map(tile => {
+        return row.split('').map(tile => {
           if (tile === landStr) {
             return LAND;
           } else if (tile === waterStr) {
             return WATER;
           } else {
-            throw new Error("Logic error. This should never happen!");
+            throw new Error('Logic error. This should never happen!');
           }
         });
       });

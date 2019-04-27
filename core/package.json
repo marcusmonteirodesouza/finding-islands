@@ -13,11 +13,16 @@
   ],
   "scripts": {
     "build": "microbundle",
-    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
-    "test": "jest",
-    "pre-commit": "yarn run format && yarn run test",
-    "prepublish": "yarn run pre-commit && yarn run build",
-    "publish": "yarn publish --access public"
+    "test": "jest --coverage",
+    "format": "prettier --single-quote --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
+    "pre-commit": "lint-staged",
+    "prepublish": "yarn run test && yarn run build"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "keywords": [
     "algorithms"
@@ -30,6 +35,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@types/jest": "^24.0.11",
     "jest": "^24.7.1",
+    "lint-staged": "^8.1.5",
     "microbundle": "^0.11.0",
     "prettier": "^1.17.0",
     "pretty-quick": "^1.10.0",
