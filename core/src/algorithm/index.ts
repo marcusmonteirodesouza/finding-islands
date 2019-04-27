@@ -1,5 +1,5 @@
 import { safeAccess } from '../utils';
-import { Sea, WATER } from './../types';
+import { Sea, WATER, Coordinate } from './../types';
 
 /**
  * Returns the islands in a map.
@@ -7,7 +7,7 @@ import { Sea, WATER } from './../types';
  * @remarks
  * The implementation's algorithm is row-by-row segmentation, as explained in this video {@link https://www.youtube.com/watch?v=hMIrQdX4BkE}
  *
- * @param sea - a bi-dimensional array of integers. Water is represented by the value 0.
+ * @param sea - a bi-dimensional array of integers. Water is represented by the value 0 and land by the value 1.
  * @returns the islands. An island is an array of coordinates.
  *
  * @example
@@ -57,17 +57,17 @@ export function findIslands(sea: Sea): Coordinate[][] {
   return Object.keys(islands).map(key => islands[key]);
 }
 
-export function labelRows(sea: Sea): Number[][] {
+export function labelRows(grid: Number[][]): Number[][] {
   let counter = 0;
 
-  for (let i = 0; i < sea.length; i++) {
-    for (let j = 0; j < sea[i].length; j++) {
-      const tile = sea[i][j];
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      const tile = grid[i][j];
 
       if (tile !== WATER) {
         // trick here
-        let tileBehind = getTileBehind(sea, i, j) || WATER;
-        let tileAbove = getTileAbove(sea, i, j) || WATER;
+        let tileBehind = getTileBehind(grid, i, j) || WATER;
+        let tileAbove = getTileAbove(grid, i, j) || WATER;
 
         const isConnected = tileBehind !== WATER || tileAbove !== WATER;
         if (isConnected) {
@@ -76,31 +76,31 @@ export function labelRows(sea: Sea): Number[][] {
           tileAbove =
             tileAbove === WATER ? Number.POSITIVE_INFINITY : tileAbove;
           const minLabel = Math.min(tileBehind, tileAbove);
-          sea[i][j] = minLabel;
+          grid[i][j] = minLabel;
           if (isFinite(tileBehind)) {
-            sea[i][j - 1] = minLabel;
+            grid[i][j - 1] = minLabel;
           }
           if (isFinite(tileAbove)) {
-            sea[i - 1][j] = minLabel;
+            grid[i - 1][j] = minLabel;
           }
         } else {
           counter++;
-          sea[i][j] = counter;
+          grid[i][j] = counter;
         }
       } else {
-        sea[i][j] = WATER;
+        grid[i][j] = WATER;
       }
     }
   }
-  return sea;
+  return grid;
 }
 
-export function getTileBehind(sea: Sea, i, j) {
-  const row = safeAccess(sea, i);
+export function getTileBehind(grid: Number[][], i, j) {
+  const row = safeAccess(grid, i);
   return safeAccess(row, j - 1);
 }
 
-export function getTileAbove(sea: Sea, i, j) {
-  const rowAbove = safeAccess(sea, i - 1);
+export function getTileAbove(grid: Number[][], i, j) {
+  const rowAbove = safeAccess(grid, i - 1);
   return safeAccess(rowAbove, j);
 }

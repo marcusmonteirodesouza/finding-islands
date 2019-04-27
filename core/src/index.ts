@@ -1,4 +1,4 @@
-import { Sea, WATER, LAND } from "./types";
-import { findIslands } from "./algorithm";
+import { Sea } from './types';
+import { findIslands } from './algorithm';
 
-export { findIslands, Sea, WATER, LAND };
+export { findIslands, Sea };

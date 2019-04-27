@@ -1,0 +1,11 @@
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+  margin-bottom: 1.5%;
+  margin-top: 0.5%;
+}
+
+textarea {
+  margin-bottom: 1.5%;
+  margin-top: 0.5%;
+}

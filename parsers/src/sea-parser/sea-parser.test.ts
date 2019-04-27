@@ -1,16 +1,15 @@
 import SeaParser from '.';
-import { LAND, WATER } from '@finding-islands/core';
 import * as fc from 'fast-check';
 
 function includesRelevantTiles(str: string): boolean {
-  return [LAND, WATER].map(n => n.toString()).some(c => str.includes(c));
+  return ['0', '1'].map(n => n.toString()).some(c => str.includes(c));
 }
 
 describe('SeaParser', () => {
   describe('parseGrid', () => {
     const p = SeaParser.parseGrid;
 
-    test(`Only ${LAND}, ${WATER} characters are taken into consideration`, () => {
+    test(`Only the characters 0 and 1 are taken into consideration`, () => {
       fc.assert(
         fc.property(fc.string(), str => {
           fc.pre(!includesRelevantTiles(str));

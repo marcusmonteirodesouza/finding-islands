@@ -1,3 +1,4 @@
-import { Sea, LAND, WATER } from './sea';
+import { Sea, SeaTile, WATER, LAND } from './sea';
+import { Coordinate } from './coordinate';
 
-export { Sea, LAND, WATER };
+export { Sea, SeaTile, WATER, LAND, Coordinate };

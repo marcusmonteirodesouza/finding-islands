@@ -1,11 +1,16 @@
-import { Sea, LAND, WATER } from '@finding-islands/core';
+import { Sea } from '@finding-islands/core';
+
+const WATER_STR = '0';
+const WATER_INT = 0;
+const LAND_STR = '1';
+const LAND_INT = 1;
 
 export default class SeaParser {
   /**
    * Returns a Sea type from a grid string.
    *
    * @param grid - a string. The only values that are as tiles are the values
-   * defined LAND (1) and WATER (0). Newlines are used to define rows. The coordinate
+   * defined WATER (0) and LAND (1). Newlines are used to define rows. The coordinate
    * {0, 0} is located at the top-left corner and is incremented both to the
    * right and down.
    * @returns a Sea type that can be processed by the `core` algorithms {@link https://www.npmjs.com/package/@finding-islands/core}.
@@ -30,10 +35,10 @@ export default class SeaParser {
    * ``
    */
   static parseGrid(grid: string): Sea {
-    const landStr = LAND.toString();
-    const waterStr = WATER.toString();
-
-    const relevantTilesRegExp = new RegExp(`[^${landStr}${waterStr}\\n]`, 'g');
+    const relevantTilesRegExp = new RegExp(
+      `[^${WATER_STR}${LAND_STR}\\n]`,
+      'g'
+    );
 
     const relevantGrid = grid.replace(relevantTilesRegExp, '');
 
@@ -42,10 +47,10 @@ export default class SeaParser {
       .filter(row => row.length > 0)
       .map(row => {
         return row.split('').map(tile => {
-          if (tile === landStr) {
-            return LAND;
-          } else if (tile === waterStr) {
-            return WATER;
+          if (tile === WATER_STR) {
+            return WATER_INT;
+          } else if (tile === LAND_STR) {
+            return LAND_INT;
           } else {
             throw new Error('Logic error. This should never happen!');
           }
