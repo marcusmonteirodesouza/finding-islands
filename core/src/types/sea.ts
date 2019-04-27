@@ -1,5 +1,5 @@
 export type Sea = Number[][];
 
-export const water = 0;
+export const WATER = 0;
 
-export const land = 1;
+export const LAND = 1;

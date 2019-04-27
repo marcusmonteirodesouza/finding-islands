@@ -1,3 +1,3 @@
-import { Sea } from "./sea";
+import { Sea, LAND, WATER } from "./sea";
 
-export { Sea };
+export { Sea, LAND, WATER };

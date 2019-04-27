@@ -1,5 +1,5 @@
 import { safeAccess } from "../utils";
-import { Sea, water } from "./../types/sea";
+import { Sea, WATER } from "./../types";
 
 export function findIslands(sea: Sea): Coordinate[][] {
   /**
@@ -44,7 +44,7 @@ export function findIslands(sea: Sea): Coordinate[][] {
   for (let i = 0; i < labeledSea.length; i++) {
     for (let j = 0; j < labeledSea[i].length; j++) {
       const label = labeledSea[i][j] as number;
-      if (label === water) {
+      if (label === WATER) {
         continue;
       }
       if (label in islands) {
@@ -65,17 +65,17 @@ export function labelRows(sea: Sea): Number[][] {
     for (let j = 0; j < sea[i].length; j++) {
       const tile = sea[i][j];
 
-      if (tile !== water) {
+      if (tile !== WATER) {
         // trick here
-        let tileBehind = getTileBehind(sea, i, j) || water;
-        let tileAbove = getTileAbove(sea, i, j) || water;
+        let tileBehind = getTileBehind(sea, i, j) || WATER;
+        let tileAbove = getTileAbove(sea, i, j) || WATER;
 
-        const isConnected = tileBehind !== water || tileAbove !== water;
+        const isConnected = tileBehind !== WATER || tileAbove !== WATER;
         if (isConnected) {
           tileBehind =
-            tileBehind === water ? Number.POSITIVE_INFINITY : tileBehind;
+            tileBehind === WATER ? Number.POSITIVE_INFINITY : tileBehind;
           tileAbove =
-            tileAbove === water ? Number.POSITIVE_INFINITY : tileAbove;
+            tileAbove === WATER ? Number.POSITIVE_INFINITY : tileAbove;
           const minLabel = Math.min(tileBehind, tileAbove);
           sea[i][j] = minLabel;
           if (isFinite(tileBehind)) {
@@ -89,7 +89,7 @@ export function labelRows(sea: Sea): Number[][] {
           sea[i][j] = counter;
         }
       } else {
-        sea[i][j] = water;
+        sea[i][j] = WATER;
       }
     }
   }

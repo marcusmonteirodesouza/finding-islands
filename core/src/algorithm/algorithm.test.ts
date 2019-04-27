@@ -1,46 +1,46 @@
-import { water, land } from "./../types/sea";
+import { WATER, LAND } from "./../types";
 import { findIslands, labelRows, getTileBehind, getTileAbove } from ".";
 
 describe("algorithm", () => {
   const emptySea = [[]];
 
-  const singleWaterTile = [[water]];
+  const singleWaterTile = [[WATER]];
 
-  const singleLandTile = [[land]];
+  const singleLandTile = [[LAND]];
 
-  const allWaterRow = [[water, water, water, water, water]];
+  const allWaterRow = [[WATER, WATER, WATER, WATER, WATER]];
 
-  const allLandRowSea = [[land, land, land, land, land]];
+  const allLandRowSea = [[LAND, LAND, LAND, LAND, LAND]];
 
-  const allWaterColumn = [[water], [water], [water], [water], [water]];
+  const allWaterColumn = [[WATER], [WATER], [WATER], [WATER], [WATER]];
 
-  const allLandColumn = [[land], [land], [land], [land], [land]];
+  const allLandColumn = [[LAND], [LAND], [LAND], [LAND], [LAND]];
 
-  const singleRow = [[land, land, water, water, land]];
+  const singleRow = [[LAND, LAND, WATER, WATER, LAND]];
 
-  const singleColumn = [[land], [land], [water], [land], [land]];
+  const singleColumn = [[LAND], [LAND], [WATER], [LAND], [LAND]];
 
   const sea0 = [
-    [land, land, water, water, land],
-    [water, land, water, water, land],
-    [land, water, water, land, land],
-    [water, water, water, water, water],
-    [land, water, land, water, land]
+    [LAND, LAND, WATER, WATER, LAND],
+    [WATER, LAND, WATER, WATER, LAND],
+    [LAND, WATER, WATER, LAND, LAND],
+    [WATER, WATER, WATER, WATER, WATER],
+    [LAND, WATER, LAND, WATER, LAND]
   ];
 
   const hugeIsland = [
-    [water, water, land, water, water],
-    [water, land, land, land, water],
-    [land, land, land, land, land],
-    [water, land, land, land, water],
-    [water, water, land, water, water]
+    [WATER, WATER, LAND, WATER, WATER],
+    [WATER, LAND, LAND, LAND, WATER],
+    [LAND, LAND, LAND, LAND, LAND],
+    [WATER, LAND, LAND, LAND, WATER],
+    [WATER, WATER, LAND, WATER, WATER]
   ];
 
   const sea2 = [
-    [land, land, water, land, water],
-    [water, land, water, land, land],
-    [water, land, land, water, water],
-    [land, land, water, water, land]
+    [LAND, LAND, WATER, LAND, WATER],
+    [WATER, LAND, WATER, LAND, LAND],
+    [WATER, LAND, LAND, WATER, WATER],
+    [LAND, LAND, WATER, WATER, LAND]
   ];
 
   test("getTileBehind", () => {
@@ -51,11 +51,11 @@ describe("algorithm", () => {
     expect(getTileBehind(singleLandTile, 0, 0)).toEqual(null);
 
     expect(getTileBehind(singleRow, 0, 0)).toEqual(null);
-    expect(getTileBehind(singleRow, 0, 1)).toEqual(land);
-    expect(getTileBehind(singleRow, 0, 2)).toEqual(land);
-    expect(getTileBehind(singleRow, 0, 3)).toEqual(water);
-    expect(getTileBehind(singleRow, 0, 4)).toEqual(water);
-    expect(getTileBehind(singleRow, 0, 5)).toEqual(land);
+    expect(getTileBehind(singleRow, 0, 1)).toEqual(LAND);
+    expect(getTileBehind(singleRow, 0, 2)).toEqual(LAND);
+    expect(getTileBehind(singleRow, 0, 3)).toEqual(WATER);
+    expect(getTileBehind(singleRow, 0, 4)).toEqual(WATER);
+    expect(getTileBehind(singleRow, 0, 5)).toEqual(LAND);
     expect(getTileBehind(singleRow, 0, 6)).toEqual(null);
 
     expect(getTileBehind(singleColumn, 0, 0)).toEqual(null);
@@ -65,16 +65,16 @@ describe("algorithm", () => {
     expect(getTileBehind(singleColumn, 4, 0)).toEqual(null);
 
     expect(getTileBehind(sea0, 0, 0)).toEqual(null);
-    expect(getTileBehind(sea0, 1, 1)).toEqual(water);
-    expect(getTileBehind(sea0, 2, 2)).toEqual(water);
-    expect(getTileBehind(sea0, 3, 3)).toEqual(water);
-    expect(getTileBehind(sea0, 4, 4)).toEqual(water);
+    expect(getTileBehind(sea0, 1, 1)).toEqual(WATER);
+    expect(getTileBehind(sea0, 2, 2)).toEqual(WATER);
+    expect(getTileBehind(sea0, 3, 3)).toEqual(WATER);
+    expect(getTileBehind(sea0, 4, 4)).toEqual(WATER);
 
     expect(getTileBehind(hugeIsland, 0, 0)).toEqual(null);
-    expect(getTileBehind(hugeIsland, 1, 1)).toEqual(water);
-    expect(getTileBehind(hugeIsland, 2, 2)).toEqual(land);
-    expect(getTileBehind(hugeIsland, 3, 3)).toEqual(land);
-    expect(getTileBehind(hugeIsland, 4, 4)).toEqual(water);
+    expect(getTileBehind(hugeIsland, 1, 1)).toEqual(WATER);
+    expect(getTileBehind(hugeIsland, 2, 2)).toEqual(LAND);
+    expect(getTileBehind(hugeIsland, 3, 3)).toEqual(LAND);
+    expect(getTileBehind(hugeIsland, 4, 4)).toEqual(WATER);
   });
 
   test("getTileAbove", () => {
@@ -91,22 +91,22 @@ describe("algorithm", () => {
     expect(getTileAbove(singleRow, 0, 4)).toEqual(null);
 
     expect(getTileAbove(singleColumn, 0, 0)).toEqual(null);
-    expect(getTileAbove(singleColumn, 1, 0)).toEqual(land);
-    expect(getTileAbove(singleColumn, 2, 0)).toEqual(land);
-    expect(getTileAbove(singleColumn, 3, 0)).toEqual(water);
-    expect(getTileAbove(singleColumn, 4, 0)).toEqual(land);
+    expect(getTileAbove(singleColumn, 1, 0)).toEqual(LAND);
+    expect(getTileAbove(singleColumn, 2, 0)).toEqual(LAND);
+    expect(getTileAbove(singleColumn, 3, 0)).toEqual(WATER);
+    expect(getTileAbove(singleColumn, 4, 0)).toEqual(LAND);
 
     expect(getTileAbove(sea0, 0, 0)).toEqual(null);
-    expect(getTileAbove(sea0, 1, 1)).toEqual(land);
-    expect(getTileAbove(sea0, 2, 2)).toEqual(water);
-    expect(getTileAbove(sea0, 3, 3)).toEqual(land);
-    expect(getTileAbove(sea0, 4, 4)).toEqual(water);
+    expect(getTileAbove(sea0, 1, 1)).toEqual(LAND);
+    expect(getTileAbove(sea0, 2, 2)).toEqual(WATER);
+    expect(getTileAbove(sea0, 3, 3)).toEqual(LAND);
+    expect(getTileAbove(sea0, 4, 4)).toEqual(WATER);
 
     expect(getTileAbove(hugeIsland, 0, 0)).toEqual(null);
-    expect(getTileAbove(hugeIsland, 1, 1)).toEqual(water);
-    expect(getTileAbove(hugeIsland, 2, 2)).toEqual(land);
-    expect(getTileAbove(hugeIsland, 3, 3)).toEqual(land);
-    expect(getTileAbove(hugeIsland, 4, 4)).toEqual(water);
+    expect(getTileAbove(hugeIsland, 1, 1)).toEqual(WATER);
+    expect(getTileAbove(hugeIsland, 2, 2)).toEqual(LAND);
+    expect(getTileAbove(hugeIsland, 3, 3)).toEqual(LAND);
+    expect(getTileAbove(hugeIsland, 4, 4)).toEqual(WATER);
   });
 
   describe("labelRows", () => {
