@@ -1,42 +1,41 @@
 import { safeAccess } from "../utils";
 import { Sea, WATER } from "./../types";
 
+/**
+ * Returns the islands in a map.
+ *
+ * @remarks
+ * The implementation's algorithm is row-by-row segmentation, as explained in this video {@link https://www.youtube.com/watch?v=hMIrQdX4BkE}
+ *
+ * @param sea - a bi-dimensional array of integers. Water is represented by the value 0.
+ * @returns the islands. An island is an array of coordinates.
+ *
+ * @example
+ * Usage example
+ * ``ts
+ * findIslands([
+ *  [land, land, water, land, water],
+ *  [water, land, water, land, land],
+ *  [water, land, land, water, water],
+ *  [land, land, water, water, land]
+ * ])
+ *
+ * [
+ * [
+ *   { x: 0, y: 0 },
+ *   { x: 0, y: 1 },
+ *   { x: 1, y: 1 },
+ *   { x: 2, y: 1 },
+ *   { x: 2, y: 2 },
+ *   { x: 3, y: 0 },
+ *   { x: 3, y: 1 }
+ * ],
+ * [{ x: 0, y: 3 }, { x: 1, y: 3 }, { x: 1, y: 4 }],
+ * [{ x: 3, y: 4 }]
+ * ]
+ * ``
+ */
 export function findIslands(sea: Sea): Coordinate[][] {
-  /**
-   * Returns the islands in a map.
-   *
-   * @remarks
-   * The implementation's algorithm is row-by-row segmentation, as explained in this video {@link https://www.youtube.com/watch?v=hMIrQdX4BkE}
-   *
-   * @param sea -  a bi-dimensional array of integers. Water is represented by the value 0.
-   * @returns the islands. An island is an array of coordinates.
-   *
-   * @example
-   * Usage example
-   * ```ts
-   * findIslands([
-   *  [land, land, water, land, water],
-   *  [water, land, water, land, land],
-   *  [water, land, land, water, water],
-   *  [land, land, water, water, land]
-   * ])
-   *
-   * [
-   * [
-   *   { x: 0, y: 0 },
-   *   { x: 0, y: 1 },
-   *   { x: 1, y: 1 },
-   *   { x: 2, y: 1 },
-   *   { x: 2, y: 2 },
-   *   { x: 3, y: 0 },
-   *   { x: 3, y: 1 }
-   * ],
-   * [{ x: 0, y: 3 }, { x: 1, y: 3 }, { x: 1, y: 4 }],
-   * [{ x: 3, y: 4 }]
-   * ]
-   * ```
-   */
-  //
   const labeledSea = labelRows(sea);
 
   const islands = {};
