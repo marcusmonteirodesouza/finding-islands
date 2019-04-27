@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AAAA,KACE,uEAIF,CAEA,cAJE,kBAAmB,CACnB,cAMF","file":"main.cbd8aceb.chunk.css","sourcesContent":["code {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n  margin-bottom: 1.5%;\n  margin-top: 0.5%;\n}\n\ntextarea {\n  margin-bottom: 1.5%;\n  margin-top: 0.5%;\n}\n"]}

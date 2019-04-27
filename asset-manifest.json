@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/finding-islands/static/css/main.cbd8aceb.chunk.css",
+    "main.js": "/finding-islands/static/js/main.5dc8bade.chunk.js",
+    "main.js.map": "/finding-islands/static/js/main.5dc8bade.chunk.js.map",
+    "runtime~main.js": "/finding-islands/static/js/runtime~main.9999872c.js",
+    "runtime~main.js.map": "/finding-islands/static/js/runtime~main.9999872c.js.map",
+    "static/css/2.764ccc25.chunk.css": "/finding-islands/static/css/2.764ccc25.chunk.css",
+    "static/js/2.7be55751.chunk.js": "/finding-islands/static/js/2.7be55751.chunk.js",
+    "static/js/2.7be55751.chunk.js.map": "/finding-islands/static/js/2.7be55751.chunk.js.map",
+    "index.html": "/finding-islands/index.html",
+    "precache-manifest.60a44fa44bd4a151a662ac3b007ef2ef.js": "/finding-islands/precache-manifest.60a44fa44bd4a151a662ac3b007ef2ef.js",
+    "service-worker.js": "/finding-islands/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/finding-islands/static/css/2.764ccc25.chunk.css.map",
+    "static/css/main.cbd8aceb.chunk.css.map": "/finding-islands/static/css/main.cbd8aceb.chunk.css.map"
+  }
+}
