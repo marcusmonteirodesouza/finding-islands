@@ -1,6 +1,6 @@
 {
   "name": "@finding-islands/core",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Find Islands in the Sea, Core",
   "homepage": "https://github.com/marcusmonteirodesouza/finding-islands/tree/master/core",
   "source": "src/index.ts",
@@ -14,7 +14,7 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
     "test": "jest",
     "pre-commit": "yarn run format && yarn run test",
-    "prepublish": "yarn run format && yarn run test && yarn run build",
+    "prepublish": "yarn run pre-commit && yarn run build",
     "publish": "yarn publish --access public"
 
   },
