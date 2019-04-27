@@ -1,0 +1,43 @@
+{
+  "name": "@finding-islands/parsers",
+  "version": "1.0.0",
+  "description": "Find Islands in the Sea, Parsers",
+  "homepage": "https://github.com/marcusmonteirodesouza/finding-islands/tree/master/parsers",
+  "source": "src/index.ts",
+  "main": "dist/index.js",
+  "umd:main": "dist/index.umd.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "microbundle",
+    "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,json,css,scss,md}'",
+    "test": "jest",
+    "pre-commit": "yarn run format && yarn run test",
+    "prepublish": "yarn run pre-commit && yarn run build",
+    "publish": "yarn publish --access public"
+  },
+  "keywords": [
+    "algorithms"
+  ],
+  "author": "Marcus Vinicius Monteiro de Souza",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/jest": "^24.0.11",
+    "fast-check": "^1.14.0",
+    "jest": "^24.7.1",
+    "microbundle": "^0.11.0",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "@finding-islands/core": "^1.0.3"
+  }
+}

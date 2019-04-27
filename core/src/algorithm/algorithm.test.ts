@@ -2,6 +2,8 @@ import { WATER, LAND } from "./../types";
 import { findIslands, labelRows, getTileBehind, getTileAbove } from ".";
 
 describe("algorithm", () => {
+  const empty = [];
+
   const emptySea = [[]];
 
   const singleWaterTile = [[WATER]];
@@ -41,6 +43,14 @@ describe("algorithm", () => {
     [WATER, LAND, WATER, LAND, LAND],
     [WATER, LAND, LAND, WATER, WATER],
     [LAND, LAND, WATER, WATER, LAND]
+  ];
+
+  const nonSquareSea = [
+    [LAND],
+    [WATER, LAND],
+    [WATER, LAND],
+    [WATER, WATER, LAND, LAND],
+    [WATER, LAND, LAND, LAND, WATER]
   ];
 
   test("getTileBehind", () => {
@@ -183,6 +193,10 @@ describe("algorithm", () => {
   });
 
   describe("findIslands", () => {
+    test("empty", () => {
+      expect(findIslands(empty)).toEqual([]);
+    });
+
     test("empty sea", () => {
       expect(findIslands(emptySea)).toEqual([]);
     });
@@ -292,6 +306,20 @@ describe("algorithm", () => {
       ];
 
       expect(findIslands(sea2)).toEqual(expectedIslandsSea2);
+    });
+
+    test("non-square sea", () => {
+      const expectedIslandsNonSquareSea = [
+        [{ x: 0, y: 0 }],
+        [{ x: 1, y: 1 }, { x: 2, y: 1 }],
+        [
+          { x: 3, y: 2 },
+          { x: 3, y: 3 },
+          { x: 4, y: 1 },
+          { x: 4, y: 2 },
+          { x: 4, y: 3 }
+        ]
+      ];
     });
   });
 });

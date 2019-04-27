@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "description": "Finding Islands",
-  "workspaces": ["core"],
+  "workspaces": ["core", "parsers"],
   "scripts": {
     "build": "yarn workspaces run build",
     "test": "yarn workspaces run test",
