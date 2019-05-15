@@ -1,11 +1,11 @@
 {
   "name": "@finding-islands/browser",
-  "version": "0.1.0",
+  "version": "1.0.6",
   "private": true,
   "homepage": "https://marcusmonteirodesouza.github.io/finding-islands",
   "dependencies": {
-    "@finding-islands/core": "1.0.4",
-    "@finding-islands/parsers": "1.0.1",
+    "@finding-islands/core": "1.0.6",
+    "@finding-islands/parsers": "1.0.6",
     "@types/jest": "24.0.11",
     "@types/node": "11.13.8",
     "@types/react": "16.8.14",
@@ -20,20 +20,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll=false",
-    "format": "prettier --single-quote --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
     "eject": "react-scripts eject",
-    "pre-commit": "lint-staged",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -48,8 +37,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.0.1",
-    "lint-staged": "^8.1.5",
-    "prettier": "^1.17.0"
+    "gh-pages": "^2.0.1"
   }
 }

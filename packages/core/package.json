@@ -13,10 +13,7 @@
   ],
   "scripts": {
     "build": "microbundle",
-    "test": "jest --coverage",
-    "format": "prettier --single-quote --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
-    "pre-commit": "lint-staged",
-    "prepublish": "yarn run test && yarn run build"
+    "test": "jest --coverage"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [

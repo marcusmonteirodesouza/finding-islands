@@ -1,29 +1,34 @@
 {
   "name": "finding-islands",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Finding Islands",
-  "workspaces": [
-    "core",
-    "parsers",
-    "browser"
-  ],
   "scripts": {
-    "build": "yarn workspaces run build",
-    "test": "yarn workspaces run test",
-    "format": "yarn workspaces run format"
+    "install": "lerna exec -- npm install",
+    "build": "lerna exec -- npm run build",
+    "test": "lerna exec -- npm run test",
+    "format": "prettier **/*.{js,jsx,ts,tsx,json,css,scss,md} --single-quote --write && git status"
   },
   "keywords": [
     "algorithms"
   ],
   "author": "Marcus Vinicius Monteiro de Souza",
   "license": "MIT",
+  "devDependencies": {
+    "husky": "^2.1.0",
+    "lerna": "^3.14.1",
+    "lint-staged": "^8.1.7",
+    "prettier": "^1.17.1"
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run test && yarn run build && yarn workspaces run format && yarn workspaces run pre-commit"
+      "pre-commit": "lint-staged"
     }
   },
-  "devDependencies": {
-    "husky": "^2.1.0"
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@finding-islands/parsers",
-  "version": "1.0.1",
+  "version": "1.0.6",
   "description": "Find Islands in the Sea, Parsers",
   "homepage": "https://github.com/marcusmonteirodesouza/finding-islands/tree/master/parsers",
   "source": "src/index.ts",
@@ -13,16 +13,7 @@
   ],
   "scripts": {
     "build": "microbundle",
-    "test": "jest --coverage",
-    "format": "prettier --single-quote --write src/**/*.{js,jsx,ts,tsx,json,css,scss,md}",
-    "pre-commit": "lint-staged",
-    "prepublish": "yarn run test && yarn run build"
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+    "test": "jest --coverage"
   },
   "keywords": [
     "algorithms"
@@ -44,6 +35,6 @@
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "@finding-islands/core": "1.0.4"
+    "@finding-islands/core": "1.0.6"
   }
 }
