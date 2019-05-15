@@ -1,3 +1,4 @@
+import { SeaTile } from './../types/sea';
 import { WATER, LAND } from './../types';
 import { findIslands, labelRows, getTileBehind, getTileAbove } from '.';
 
@@ -53,34 +54,40 @@ describe('algorithm', () => {
     [WATER, LAND, LAND, LAND, WATER]
   ];
 
+  const sea3 = [
+    [LAND, LAND, LAND, WATER, WATER, WATER, LAND, LAND],
+    [LAND, LAND, WATER, WATER, LAND, LAND, LAND, LAND],
+    [LAND, WATER, LAND, LAND, WATER, WATER, WATER, WATER]
+  ];
+
   test('getTileBehind', () => {
-    expect(getTileBehind(emptySea, 0, 0)).toEqual(null);
+    expect(getTileBehind(emptySea, 0, 0)).toEqual(WATER);
 
-    expect(getTileBehind(singleWaterTile, 0, 0)).toEqual(null);
+    expect(getTileBehind(singleWaterTile, 0, 0)).toEqual(WATER);
 
-    expect(getTileBehind(singleLandTile, 0, 0)).toEqual(null);
+    expect(getTileBehind(singleLandTile, 0, 0)).toEqual(WATER);
 
-    expect(getTileBehind(singleRow, 0, 0)).toEqual(null);
+    expect(getTileBehind(singleRow, 0, 0)).toEqual(WATER);
     expect(getTileBehind(singleRow, 0, 1)).toEqual(LAND);
     expect(getTileBehind(singleRow, 0, 2)).toEqual(LAND);
     expect(getTileBehind(singleRow, 0, 3)).toEqual(WATER);
     expect(getTileBehind(singleRow, 0, 4)).toEqual(WATER);
     expect(getTileBehind(singleRow, 0, 5)).toEqual(LAND);
-    expect(getTileBehind(singleRow, 0, 6)).toEqual(null);
+    expect(getTileBehind(singleRow, 0, 6)).toEqual(WATER);
 
-    expect(getTileBehind(singleColumn, 0, 0)).toEqual(null);
-    expect(getTileBehind(singleColumn, 1, 0)).toEqual(null);
-    expect(getTileBehind(singleColumn, 2, 0)).toEqual(null);
-    expect(getTileBehind(singleColumn, 3, 0)).toEqual(null);
-    expect(getTileBehind(singleColumn, 4, 0)).toEqual(null);
+    expect(getTileBehind(singleColumn, 0, 0)).toEqual(WATER);
+    expect(getTileBehind(singleColumn, 1, 0)).toEqual(WATER);
+    expect(getTileBehind(singleColumn, 2, 0)).toEqual(WATER);
+    expect(getTileBehind(singleColumn, 3, 0)).toEqual(WATER);
+    expect(getTileBehind(singleColumn, 4, 0)).toEqual(WATER);
 
-    expect(getTileBehind(sea0, 0, 0)).toEqual(null);
+    expect(getTileBehind(sea0, 0, 0)).toEqual(WATER);
     expect(getTileBehind(sea0, 1, 1)).toEqual(WATER);
     expect(getTileBehind(sea0, 2, 2)).toEqual(WATER);
     expect(getTileBehind(sea0, 3, 3)).toEqual(WATER);
     expect(getTileBehind(sea0, 4, 4)).toEqual(WATER);
 
-    expect(getTileBehind(hugeIsland, 0, 0)).toEqual(null);
+    expect(getTileBehind(hugeIsland, 0, 0)).toEqual(WATER);
     expect(getTileBehind(hugeIsland, 1, 1)).toEqual(WATER);
     expect(getTileBehind(hugeIsland, 2, 2)).toEqual(LAND);
     expect(getTileBehind(hugeIsland, 3, 3)).toEqual(LAND);
@@ -88,31 +95,31 @@ describe('algorithm', () => {
   });
 
   test('getTileAbove', () => {
-    expect(getTileAbove(emptySea, 0, 0)).toEqual(null);
+    expect(getTileAbove(emptySea, 0, 0)).toEqual(WATER);
 
-    expect(getTileAbove(singleWaterTile, 0, 0)).toEqual(null);
+    expect(getTileAbove(singleWaterTile, 0, 0)).toEqual(WATER);
 
-    expect(getTileAbove(singleLandTile, 0, 0)).toEqual(null);
+    expect(getTileAbove(singleLandTile, 0, 0)).toEqual(WATER);
 
-    expect(getTileAbove(singleRow, 0, 0)).toEqual(null);
-    expect(getTileAbove(singleRow, 0, 1)).toEqual(null);
-    expect(getTileAbove(singleRow, 0, 2)).toEqual(null);
-    expect(getTileAbove(singleRow, 0, 3)).toEqual(null);
-    expect(getTileAbove(singleRow, 0, 4)).toEqual(null);
+    expect(getTileAbove(singleRow, 0, 0)).toEqual(WATER);
+    expect(getTileAbove(singleRow, 0, 1)).toEqual(WATER);
+    expect(getTileAbove(singleRow, 0, 2)).toEqual(WATER);
+    expect(getTileAbove(singleRow, 0, 3)).toEqual(WATER);
+    expect(getTileAbove(singleRow, 0, 4)).toEqual(WATER);
 
-    expect(getTileAbove(singleColumn, 0, 0)).toEqual(null);
+    expect(getTileAbove(singleColumn, 0, 0)).toEqual(WATER);
     expect(getTileAbove(singleColumn, 1, 0)).toEqual(LAND);
     expect(getTileAbove(singleColumn, 2, 0)).toEqual(LAND);
     expect(getTileAbove(singleColumn, 3, 0)).toEqual(WATER);
     expect(getTileAbove(singleColumn, 4, 0)).toEqual(LAND);
 
-    expect(getTileAbove(sea0, 0, 0)).toEqual(null);
+    expect(getTileAbove(sea0, 0, 0)).toEqual(WATER);
     expect(getTileAbove(sea0, 1, 1)).toEqual(LAND);
     expect(getTileAbove(sea0, 2, 2)).toEqual(WATER);
     expect(getTileAbove(sea0, 3, 3)).toEqual(LAND);
     expect(getTileAbove(sea0, 4, 4)).toEqual(WATER);
 
-    expect(getTileAbove(hugeIsland, 0, 0)).toEqual(null);
+    expect(getTileAbove(hugeIsland, 0, 0)).toEqual(WATER);
     expect(getTileAbove(hugeIsland, 1, 1)).toEqual(WATER);
     expect(getTileAbove(hugeIsland, 2, 2)).toEqual(LAND);
     expect(getTileAbove(hugeIsland, 3, 3)).toEqual(LAND);
@@ -320,6 +327,32 @@ describe('algorithm', () => {
           { x: 4, y: 3 }
         ]
       ];
+
+      expect(findIslands(nonSquareSea)).toEqual(expectedIslandsNonSquareSea);
+    });
+
+    test('sea3', () => {
+      const expectedIslandsSea3 = [
+        [
+          { x: 0, y: 0 },
+          { x: 0, y: 1 },
+          { x: 0, y: 2 },
+          { x: 1, y: 0 },
+          { x: 1, y: 1 },
+          { x: 2, y: 0 }
+        ],
+        [
+          { x: 0, y: 6 },
+          { x: 0, y: 7 },
+          { x: 1, y: 4 },
+          { x: 1, y: 5 },
+          { x: 1, y: 6 },
+          { x: 1, y: 7 }
+        ],
+        [{ x: 2, y: 2 }, { x: 2, y: 3 }]
+      ];
+
+      expect(findIslands(sea3)).toEqual(expectedIslandsSea3);
     });
   });
 });

@@ -57,7 +57,7 @@ export function findIslands(sea: Sea): Coordinate[][] {
   return Object.keys(islands).map(key => islands[key]);
 }
 
-export function labelRows(grid: Number[][]): Number[][] {
+export function labelRows(grid: number[][]): number[][] {
   let counter = 0;
 
   for (let i = 0; i < grid.length; i++) {
@@ -65,23 +65,36 @@ export function labelRows(grid: Number[][]): Number[][] {
       const tile = grid[i][j];
 
       if (tile !== WATER) {
-        // trick here
-        let tileBehind = getTileBehind(grid, i, j) || WATER;
-        let tileAbove = getTileAbove(grid, i, j) || WATER;
+        let tileBehind = getTileBehind(grid, i, j);
+        let tileAbove = getTileAbove(grid, i, j);
 
         const isConnected = tileBehind !== WATER || tileAbove !== WATER;
+
         if (isConnected) {
-          tileBehind =
-            tileBehind === WATER ? Number.POSITIVE_INFINITY : tileBehind;
-          tileAbove =
-            tileAbove === WATER ? Number.POSITIVE_INFINITY : tileAbove;
-          const minLabel = Math.min(tileBehind, tileAbove);
+          const minLabel = (() => {
+            if (tileAbove === WATER) {
+              return tileBehind;
+            } else if (tileBehind === WATER) {
+              return tileAbove;
+            } else {
+              return Math.min(tileBehind, tileAbove);
+            }
+          })();
+
           grid[i][j] = minLabel;
-          if (isFinite(tileBehind)) {
-            grid[i][j - 1] = minLabel;
+
+          let b = 1;
+          while (tileBehind !== WATER) {
+            grid[i][j - b] = minLabel;
+            tileBehind = getTileBehind(grid, i, j - b);
+            b += 1;
           }
-          if (isFinite(tileAbove)) {
-            grid[i - 1][j] = minLabel;
+
+          let a = 1;
+          while (tileAbove !== WATER) {
+            grid[i - a][j] = minLabel;
+            tileAbove = getTileAbove(grid, i - a, j);
+            a += 1;
           }
         } else {
           counter++;
@@ -95,12 +108,16 @@ export function labelRows(grid: Number[][]): Number[][] {
   return grid;
 }
 
-export function getTileBehind(grid: Number[][], i, j) {
+export function getTileBehind(grid: number[][], i, j): number {
+  // If there is no tile above or behind it is considered water
   const row = safeAccess(grid, i);
-  return safeAccess(row, j - 1);
+  const result = safeAccess(row, j - 1);
+  return result ? result : WATER;
 }
 
-export function getTileAbove(grid: Number[][], i, j) {
+export function getTileAbove(grid: number[][], i, j): number {
+  // If there is no tile above or behind it is considered water
   const rowAbove = safeAccess(grid, i - 1);
-  return safeAccess(rowAbove, j);
+  const result = safeAccess(rowAbove, j);
+  return result ? result : WATER;
 }

@@ -1,7 +1,7 @@
 export type Sea = SeaTile[][];
 
-export const WATER = 0;
+export const WATER: SeaTile = 0;
 
-export const LAND = 1;
+export const LAND: SeaTile = 1;
 
 export type SeaTile = 0 | 1;
