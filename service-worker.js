@@ -11,10 +11,10 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.0/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/finding-islands/precache-manifest.f195963b23665ba088bf23e4630e1b48.js"
+  "/finding-islands/precache-manifest.72162e1866d59474c6b5e533b0ea6925.js"
 );
 
 self.addEventListener('message', (event) => {
